@@ -1,5 +1,6 @@
 const express = require('express');
 const Pdb = require('./project-model');
+const Tdb = require('./task-model');
 const router = express.Router();
 
 // *****************************************
@@ -31,6 +32,18 @@ router.post('/', (req, res) => {
     })
     .catch(error => {
       res.status(500).json({ errorMessage: 'There was an error adding the project' });
+    })
+})
+// *****************************************
+// add a task to a project
+// *****************************************
+router.post('/:id/tasks', (req, res) => {
+  Tdb.addTask(req.body, req.params.id)
+    .then(newTask => {
+      res.status(201).json(newTask);
+    })
+    .catch(error => {
+      res.status(500).json({ errorMessage: 'There was an error adding the task' });
     })
 })
 
