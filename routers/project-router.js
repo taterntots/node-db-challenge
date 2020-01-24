@@ -37,16 +37,6 @@ router.post('/', (req, res) => {
 // *****************************************
 // add a task to a project
 // *****************************************
-// router.post('/:id/tasks', (req, res) => {
-//   Tdb.addTask(req.body, req.params.id)
-//     .then(newTask => {
-//       res.status(201).json(newTask);
-//     })
-//     .catch(error => {
-//       res.status(500).json({ errorMessage: 'There was an error adding the task' });
-//     })
-// })
-
 router.post('/:id/tasks', (req, res) => {
   Tdb.addTask({ project_id: req.params.id, ...req.body })
     .then(newTask => {
@@ -57,6 +47,14 @@ router.post('/:id/tasks', (req, res) => {
     })
 })
 
-
+// router.post('/:id/tasks', (req, res) => {
+//   Tdb.addTask(req.body, req.params.id)
+//     .then(newTask => {
+//       res.status(201).json(newTask);
+//     })
+//     .catch(error => {
+//       res.status(500).json({ errorMessage: 'There was an error adding the task' });
+//     })
+// })
 
 module.exports = router;

@@ -21,17 +21,5 @@ router.get('/', (req, res) => {
       res.status(500).json({ errorMessage: 'There was an error retrieving the list of tasks' });
     })
 })
-// *****************************************
-// add a new task to the list
-// *****************************************
-router.post('/', (req, res) => {
-  Tdb.addTask(req.body, req.params.id)
-    .then(newTask => {
-      res.status(201).json(newTask);
-    })
-    .catch(error => {
-      res.status(500).json({ errorMessage: 'There was an error adding the task' });
-    })
-})
 
 module.exports = router;
