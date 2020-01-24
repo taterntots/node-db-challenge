@@ -32,15 +32,15 @@ function getTaskById(taskId) {
 // *****************************************
 // add a new Task to the list
 // *****************************************
-// function addTask(newTask, project_id) {
-//   return db
-//     .insert(newTask, 'id')
-//     .into('tasks')
-//     .where({ project_id: project_id })
-// }
-
-function addTask(data) {
+function addTask(newTask, project_id) {
   return db('tasks')
-    .insert(data)
-    .then(id => findById(id));
+    .insert(newTask, 'id')
+    // .into('tasks')
+    .where({ project_id: project_id })
 }
+
+// function addTask(data) {
+//   return db('tasks')
+//     .insert(data)
+//     .then(id => findById(id));
+// }
